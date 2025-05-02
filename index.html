@@ -1,39 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>untitled</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: black;
-      color: white;
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    h1, h2 {
-      margin: 0;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 3em;
-    }
-
-    h2 {
-      font-size: 1.5em;
-      margin-top: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>fxzh</title>
+    <style>
+        :root {
+            padding: 0;
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            color: white;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        body {
+            background-color: #000;
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-attachment: fixed;
+        }
+    </style>
 </head>
-<body>
-  <h1>untitled</h1>
-  <h2>under construction</h2>
+<body class="min-h-screen flex flex-col">
+    <header class="w-full fixed top-0 px-4 pt-4 flex justify-center items-center">
+        <img class="w-[50px]" src="https://cdn.discordapp.com/attachments/1367636414828646573/1367641672674185287/image.png?ex=68155310&is=68140190&hm=4bd3594c669e0b9cf6d06c64908ffe114ff841e49bcec25c509e2ead1b8b0402&">
+        <a class="text-xl font-bold">Untitled</a>
+        <nav class="flex flex-row-reverse w-full gap-4 pr-4">
+          <a href="#features" class="cursor-pointer font-bold">Features</a>
+          <a href="#showcase" class="cursor-pointer font-bold">Showcase</a>
+          <a href="#home" class="cursor-pointer font-bold">Home</a>
+        </nav>
+    </header>
+
+    <section id="home" class="min-h-screen w-full p-10 flex-grow flex flex-col justify-center items-center gap-4">
+        <a class="text-6xl font-bold">Untitled Mod Menu</a>
+        <a class="text-md text-[#ccc]">Gorilla Tag cheats brought to you by the best developers</a>
+    
+        <div class="flex flex-row items-center gap-4">
+            <a onclick="alert(`Not for sale currently`)" class="cursor-pointer text-[#000] bg-[#fff] rounded-md px-6 py-3 transition hover:brightness-75">Buy Now</a>
+            <a href="https://discord.gg/untitledmenu" class="cursor-pointer bg-[#7289DA] rounded-md px-6 py-3 hover:bg-grey-200 transition hover:brightness-125">Join Discord</a>
+        </div>
+
+        <span class="bg-[#fff] w-[125px] h-[2px]"></span>
+
+        <a href="#showcase" class="cursor-pointer bg-[#111] w-[35px] h-[35px] rounded-full border border-[#ffffff20] flex items-center justify-center">
+            <svg class="w-[20px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="#ffffff90" d="M169.4 470.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 370.8 224 64c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 306.7L54.6 265.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+        </a>
+    </section>
+
+    <section id="showcase" class="h-full w-full p-10 flex-grow flex flex-col justify-center items-center gap-4">
+        <a class="text-4xl font-bold">Showcase</a>
+        <span class="bg-[#fff] w-[125px] h-[2px]"></span>
+        <div class="flex flex-col items-center items-stretch md:flex-row flex-wrap justify-center gap-4 w-full mt-4">
+            <div class="cursor-pointer min-w-[325px] bg-[#111] rounded-md border-t-2 border-[#fff] p-10 flex flex-col items-center gap-4">
+                <svg class="w-[50px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#fff" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>
+                <a class="text-xl">MOD Trolling with OP MODS In Gorilla Tag Public Lobbies</a>
+                <span class="bg-[#fff] w-[125px] h-[2px]"></span>
+                <iframe width="400" height="225" src="https://www.youtube.com/embed/89RrmLvYTXU" title="MOD Trolling with OP MODS In Gorilla Tag Public Lobbies" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="h-full w-full p-10 flex-grow flex flex-col justify-center items-center gap-4">
+        <a class="text-4xl font-bold">Features</a>
+        <span class="bg-[#fff] w-[125px] h-[2px]"></span>
+        <div class="flex flex-col items-center items-stretch md:flex-row flex-wrap justify-center gap-4 w-full mt-4">
+            <div class="cursor-pointer w-[325px] bg-[#111] rounded-md border-t-2 border-[#fff] p-10 flex flex-col items-center gap-4">
+                <svg class="w-[50px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#fff" d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"/></svg>
+                <a class="text-xl">Undetected Mods</a>
+                <span class="bg-[#fff] w-[125px] h-[2px]"></span>
+                <a class="text-[#ffffff70]">We test every single one of our mods and cheats everytime that Gorilla Tag updates, and we maintain everything to be undetected</a>
+            </div>
+
+            <div class="cursor-pointer w-[325px] bg-[#111] rounded-md border-t-2 border-[#fff] p-10 flex flex-col items-center gap-4">
+                <svg class="w-[50px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#fff" d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 96l320 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L96 160c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+                <a class="text-xl">Fucking Ugly UI & Menu</a>
+                <span class="bg-[#fff] w-[125px] h-[2px]"></span>
+                <a class="text-[#ffffff70]">A terrible and anti-user-friendly design that you can edit to your hating and use with effort.</a>
+            </div>
+
+            <div class="cursor-pointer w-[325px] bg-[#111] rounded-md border-t-2 border-[#fff] p-10 flex flex-col items-center gap-4">
+                <svg class="w-[50px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="#fff" d="M309 106c11.4-7 19-19.7 19-34c0-22.1-17.9-40-40-40s-40 17.9-40 40c0 14.4 7.6 27 19 34L209.7 220.6c-9.1 18.2-32.7 23.4-48.6 10.7L72 160c5-6.7 8-15 8-24c0-22.1-17.9-40-40-40S0 113.9 0 136s17.9 40 40 40c.2 0 .5 0 .7 0L86.4 427.4c5.5 30.4 32 52.6 63 52.6l277.2 0c30.9 0 57.4-22.1 63-52.6L535.3 176c.2 0 .5 0 .7 0c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40c0 9 3 17.3 8 24l-89.1 71.3c-15.9 12.7-39.5 7.5-48.6-10.7L309 106z"/></svg>
+                <a class="text-xl">Overpowered Mods</a>
+                <span class="bg-[#fff] w-[125px] h-[2px]"></span>
+                <a class="text-[#ffffff70]">We are dedicated to making extremely overpowered mods at all times possible.</a>
+            </div>
+        </div>
+    </section>
 </body>
 </html>
