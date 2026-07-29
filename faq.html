@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — Lumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="showcases.html">Showcases</a>
+    </div>
+    <div class="buy" data-buy>
+      <button type="button" class="nav-cta buy-trigger" aria-haspopup="menu" aria-expanded="false">
+        Buy <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="buy-menu" role="menu">
+        <a href="https://discord.gg/untitledmenu" role="menuitem">
+          <span class="icon"><i class="fa-solid fa-bolt"></i></span>
+          <span class="label"><strong>Buy Untitled</strong><span>Stable release</span></span>
+        </a>
+        <a href="https://discord.gg/untitledmenu" role="menuitem">
+          <span class="icon"><i class="fa-solid fa-flask"></i></span>
+          <span class="label"><strong>Buy Untitled (Beta)</strong><span>Early features, cutting edge</span></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="prose">
+    <h1>FAQ</h1>
+    <p class="muted">Quick answers. Anything else, ask in the Discord.</p>
+
+    <details>
+      <summary>How do I buy Lumi?</summary>
+      <p>Only purchase through reseller.best, anything else is a scam.</p>
+    </details>
+
+    <details>
+      <summary>How do I install it?</summary>
+      <p>Go to wyvern.im/download, and run the loader. Disable antivirus if needed.</p>
+    </details>
+
+    <details>
+      <summary>Does it work on standalone?</summary>
+      <p>Unfortunately, no. However, we plan on implementing it.</p>
+    </details>
+
+    <details>
+      <summary>The game just updated and Lumi broke. What do I do?</summary>
+      <p>Wait for an update. Watch the announcements channel in the Discord.</p>
+    </details>
+
+    <details>
+      <summary>Where do I report bugs or suggest features?</summary>
+      <p>Find the bug & suggestion channels in the Discord and make a post through there.</p>
+    </details>
+
+    <div class="band">
+      <div>
+        <h2>Still stuck?</h2>
+        <p>Ask around in the Discord.</p>
+      </div>
+      <a class="btn btn-primary" href="https://discord.com">Join the Discord</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="socials">
+        <a href="https://discord.com" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://youtube.com" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://discord.com/terms">Discord ToS</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('[data-buy]').forEach((el) => {
+      const trigger = el.querySelector('.buy-trigger');
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = el.dataset.open === 'true';
+        document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+        if (!open) { el.dataset.open = 'true'; trigger.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+    });
+  </script>
+</body>
+</html>

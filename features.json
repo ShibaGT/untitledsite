@@ -1,0 +1,486 @@
+{
+  "categories": [
+    {
+      "name": "Settings",
+      "features": [
+        {
+          "title": "Theme",
+          "description": "Switch between menu color themes."
+        },
+        {
+          "title": "Opacity",
+          "description": "Set how transparent the menu appears."
+        },
+        {
+          "title": "Font",
+          "description": "Choose the font used across the menu."
+        },
+        {
+          "title": "Gradient",
+          "description": "Toggle and pick animated gradient styles for the menu."
+        },
+        {
+          "title": "Gradient Speed",
+          "description": "Control how fast the gradient animates."
+        },
+        {
+          "title": "Size",
+          "description": "Scale the whole menu bigger or smaller."
+        },
+        {
+          "title": "Corners",
+          "description": "Adjust corner roundness of menu panels."
+        },
+        {
+          "title": "Anim Speed",
+          "description": "Set the menu animation speed."
+        },
+        {
+          "title": "Anim Type",
+          "description": "Pick which open/close animation the menu uses."
+        },
+        {
+          "title": "Sound",
+          "description": "Choose the menu interaction sound."
+        },
+        {
+          "title": "Hand",
+          "description": "Put the menu on your left or right hand."
+        },
+        {
+          "title": "Pointer",
+          "description": "Change the size of the aim pointer."
+        },
+        {
+          "title": "Follow",
+          "description": "Set how quickly the menu follows your hand."
+        },
+        {
+          "title": "Gun Style",
+          "description": "Cycle the line style used by pointer guns."
+        },
+        {
+          "title": "Gun Sphere",
+          "description": "Resize the gun's aim sphere."
+        }
+      ]
+    },
+    {
+      "name": "Movement",
+      "features": [
+        {
+          "title": "Platforms",
+          "description": "Spawns platforms when holding grip."
+        },
+        {
+          "title": "Noclip",
+          "description": "Walk through objects and geometry."
+        },
+        {
+          "title": "Long Arms",
+          "description": "Changes the length of your arms."
+        },
+        {
+          "title": "Zoom Mod",
+          "description": "Zoom your VR view while holding trigger."
+        },
+        {
+          "title": "Uncap Max Velocity",
+          "description": "Removes the maximum velocity limit."
+        },
+        {
+          "title": "Speed Boost",
+          "description": "Boosts your movement speed."
+        },
+        {
+          "title": "Spiderwalk",
+          "description": "Allows walking on walls and surfaces."
+        },
+        {
+          "title": "Web Slinger",
+          "description": "Spawns web-slingers from your hands."
+        },
+        {
+          "title": "Pull Mod",
+          "description": "Slightly teleports you while moving."
+        },
+        {
+          "title": "Checkpoint",
+          "description": "Creates checkpoints you can teleport back to."
+        },
+        {
+          "title": "Teleport Gun",
+          "description": "Teleport to where you aim."
+        },
+        {
+          "title": "WASD Fly",
+          "description": "Fly using keyboard and mouse controls."
+        },
+        {
+          "title": "Hand Fly",
+          "description": "Fly using your hand movement."
+        },
+        {
+          "title": "Body Fly",
+          "description": "Fly using your body movement."
+        },
+        {
+          "title": "Slingshot Fly",
+          "description": "Fly using elastic velocity movement."
+        },
+        {
+          "title": "Joystick Fly",
+          "description": "Fly using your controller joystick."
+        },
+        {
+          "title": "Banana Car",
+          "description": "Drive around using joystick controls."
+        },
+        {
+          "title": "Freecam",
+          "description": "Move independently from your body."
+        },
+        {
+          "title": "Noclip Fly",
+          "description": "Fly through objects and geometry."
+        },
+        {
+          "title": "Iron Monkey",
+          "description": "Fly like Iron Man."
+        },
+        {
+          "title": "Wall Walk",
+          "description": "Climb and walk on walls."
+        },
+        {
+          "title": "Dash",
+          "description": "Quickly dash in a direction."
+        },
+        {
+          "title": "Strafe",
+          "description": "Move sideways quickly."
+        },
+        {
+          "title": "Slide Control",
+          "description": "Control sliding movement."
+        },
+        {
+          "title": "Bouncy Map",
+          "description": "Makes the map surfaces bouncy."
+        },
+        {
+          "title": "Air Swim",
+          "description": "Swim anywhere."
+        },
+        {
+          "title": "Fast Swim",
+          "description": "Increase swimming speed."
+        },
+        {
+          "title": "Size Changer",
+          "description": "Change your player size."
+        },
+        {
+          "title": "TP To Stump",
+          "description": "Teleport to stump."
+        },
+        {
+          "title": "TP On Quitbox",
+          "description": "Teleport when touching the quitbox."
+        },
+        {
+          "title": "Frozone",
+          "description": "Slide around like Frozone."
+        },
+        {
+          "title": "Punch Mod",
+          "description": "Allows punch knockback interactions."
+        },
+        {
+          "title": "Grab Mod",
+          "description": "Allows grabbing interactions."
+        }
+      ]
+    },
+    {
+      "name": "Visuals",
+      "features": [
+        {
+          "title": "Morning Time",
+          "description": "Change the environment time to morning."
+        },
+        {
+          "title": "Day Time",
+          "description": "Change the environment time to day."
+        },
+        {
+          "title": "Evening Time",
+          "description": "Change the environment time to evening."
+        },
+        {
+          "title": "Night Time",
+          "description": "Change the environment time to night."
+        },
+        {
+          "title": "Box ESP",
+          "description": "Shows player bodies through walls."
+        },
+        {
+          "title": "2D Box ESP",
+          "description": "Displays players using 2D boxes."
+        },
+        {
+          "title": "3D Box ESP",
+          "description": "Displays players using 3D boxes."
+        },
+        {
+          "title": "3D Pyramid ESP",
+          "description": "Displays players using 3D pyramid visuals."
+        },
+        {
+          "title": "3D Sphere ESP",
+          "description": "Displays players using 3D sphere visuals."
+        },
+        {
+          "title": "3D Star ESP",
+          "description": "Displays players using 3D star visuals."
+        },
+        {
+          "title": "3D Hexagon ESP",
+          "description": "Displays players using 3D hexagon visuals."
+        },
+        {
+          "title": "Short Monkes",
+          "description": "Changes player proportions to shorter monkeys."
+        },
+        {
+          "title": "Stub Monkes",
+          "description": "Changes player proportions to stub monkeys."
+        },
+        {
+          "title": "2D Monkes",
+          "description": "Changes player proportions into a 2D style."
+        },
+        {
+          "title": "Humanoid ESP",
+          "description": "Shows humanoid player visuals."
+        },
+        {
+          "title": "Bone ESP",
+          "description": "Displays player skeleton bones."
+        },
+        {
+          "title": "Breadcrumbs",
+          "description": "Shows player movement trails."
+        },
+        {
+          "title": "Tracers",
+          "description": "Draws lines toward players."
+        },
+        {
+          "title": "Grab ESP",
+          "description": "Displays grab-related player information."
+        },
+        {
+          "title": "Chams",
+          "description": "Highlights players through walls."
+        },
+        {
+          "title": "Nametags",
+          "description": "Shows information above player heads."
+        },
+        {
+          "title": "Promised ESP",
+          "description": "The ESP promised 3000 years ago."
+        },
+        {
+          "title": "Wireframe ESP",
+          "description": "Displays players with wireframe visuals."
+        },
+        {
+          "title": "Beacon ESP",
+          "description": "Draws a vertical marker through players."
+        },
+        {
+          "title": "Nearest Tracer",
+          "description": "Draws a tracer to the closest player."
+        },
+        {
+          "title": "Hitbox Prediction",
+          "description": "Predicts player positions using velocity."
+        },
+        {
+          "title": "Jump Prediction",
+          "description": "Predicts and displays jump paths."
+        },
+        {
+          "title": "Grabbing Nametags",
+          "description": "Shows grabbing velocity information."
+        },
+        {
+          "title": "Velocity Nametags",
+          "description": "Shows player velocity above their head."
+        },
+        {
+          "title": "Ping Nametags",
+          "description": "Shows player ping information."
+        },
+        {
+          "title": "FPS Nametags",
+          "description": "Shows player FPS information."
+        },
+        {
+          "title": "Platform Nametags",
+          "description": "Shows the player's platform type."
+        },
+        {
+          "title": "Lagging Nametags",
+          "description": "Shows when players are lagging."
+        },
+        {
+          "title": "Cosmetic ESP",
+          "description": "Highlights players with special cosmetics."
+        }
+      ]
+    },
+    {
+      "name": "Overpowered",
+      "features": [
+        {
+          "title": "Deafen Server",
+          "description": "Stops players in the room from hearing others."
+        },
+        {
+          "title": "Deafen Gun",
+          "description": "Stops the targeted player from hearing others."
+        },
+        {
+          "title": "Legacy Force Grabbing",
+          "description": "Enables legacy player grabbing behavior."
+        },
+        {
+          "title": "Crash Gun [grab]",
+          "description": "Targets players using grab interactions."
+        },
+        {
+          "title": "Crash All [grab]",
+          "description": "Targets all players using grab interactions."
+        },
+        {
+          "title": "Crash Gun 2 [grab]",
+          "description": "Alternative grab-based target option."
+        },
+        {
+          "title": "Crash All 2 [grab]",
+          "description": "Alternative grab-based lobby option."
+        },
+        {
+          "title": "Crash Gun 3 [grab]",
+          "description": "Another grab-based target option."
+        },
+        {
+          "title": "Fling Gun [grab]",
+          "description": "Launches the targeted player."
+        },
+        {
+          "title": "Fling All [grab]",
+          "description": "Launches players in the lobby."
+        },
+        {
+          "title": "Fling Forward Gun [grab]",
+          "description": "Launches the targeted player forward."
+        },
+        {
+          "title": "Fling Up Gun [grab]",
+          "description": "Launches the targeted player upward."
+        },
+        {
+          "title": "Lag Type",
+          "description": "Change the active lag method."
+        },
+        {
+          "title": "Lag Gun",
+          "description": "Lags the targeted player."
+        },
+        {
+          "title": "Lag All",
+          "description": "Lags everyone in the lobby."
+        },
+        {
+          "title": "Lag Gun 2",
+          "description": "Uses another lag method on a target."
+        },
+        {
+          "title": "Lag All 2",
+          "description": "Uses another lag method on everyone."
+        },
+        {
+          "title": "Stutter Gun",
+          "description": "Stutters the targeted player."
+        },
+        {
+          "title": "Stutter All",
+          "description": "Stutters everyone in the lobby."
+        },
+        {
+          "title": "Kick Modders",
+          "description": "Removes detected modders from the lobby."
+        },
+        {
+          "title": "Lock Room",
+          "description": "Locks the current room."
+        },
+        {
+          "title": "Unlock Room",
+          "description": "Unlocks the current room."
+        },
+        {
+          "title": "Kick Party Members",
+          "description": "Removes party members from the room."
+        },
+        {
+          "title": "Kick Party Member Gun",
+          "description": "Targets party members with a gun."
+        },
+        {
+          "title": "Destroy All",
+          "description": "Destroys cached room data."
+        },
+        {
+          "title": "Destroy Gun",
+          "description": "Destroys cached player data."
+        }
+      ]
+    },
+    {
+      "name": "Safety",
+      "features": [
+        {
+          "title": "Anti Report",
+          "description": "Counter report attempts with configurable distance and action settings."
+        },
+        {
+          "title": "Disable Quit Box",
+          "description": "Prevents the in-game quit box from triggering."
+        },
+        {
+          "title": "Disable Network Triggers",
+          "description": "Blocks network triggers that can affect you."
+        },
+        {
+          "title": "Help And Safety",
+          "description": "Contains tools and information designed to keep you protected."
+        }
+      ]
+    },
+    {
+      "name": "Extras",
+      "features": [
+        {
+          "title": "+500 MORE!",
+          "description": "And hundreds of additional features available throughout the menu."
+        }
+      ]
+    }
+  ]
+}

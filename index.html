@@ -1,360 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>untitled</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap');
-
-        :root {
-            --bg: #000000;
-            --fg: #ffffff;
-            --fg-m: #888888;
-            --gls: rgba(20, 20, 20, 0.5);
-            --gls-b: rgba(255, 255, 255, 0.08);
-            --gls-h: rgba(255, 255, 255, 0.15);
-            --gls-s: rgba(0, 0, 0, 0.8);
-            --grd: rgba(255, 255, 255, 0.04);
-            --glw: rgba(255, 255, 255, 0.08);
-            --btn-g: rgba(255, 255, 255, 0.03);
-            --btn-gh: rgba(255, 255, 255, 0.08);
-            --icn: rgba(255, 255, 255, 0.05);
-        }
-
-        .l {
-            --bg: #ffffff;
-            --fg: #000000;
-            --fg-m: #666666;
-            --gls: rgba(255, 255, 255, 0.5);
-            --gls-b: rgba(0, 0, 0, 0.08);
-            --gls-h: rgba(0, 0, 0, 0.15);
-            --gls-s: rgba(0, 0, 0, 0.05);
-            --grd: rgba(0, 0, 0, 0.04);
-            --glw: rgba(0, 0, 0, 0.05);
-            --btn-g: rgba(0, 0, 0, 0.03);
-            --btn-gh: rgba(0, 0, 0, 0.08);
-            --icn: rgba(0, 0, 0, 0.05);
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--fg);
-            line-height: 1.6;
-            overflow-x: hidden;
-            text-transform: lowercase;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        .b-grd {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image: 
-                linear-gradient(to right, var(--grd) 1px, transparent 1px),
-                linear-gradient(to bottom, var(--grd) 1px, transparent 1px);
-            background-size: 40px 40px;
-            mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
-            -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 90%);
-            z-index: -3;
-        }
-
-        .c-lgt {
-            position: fixed;
-            top: -300px; left: -300px;
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, var(--glw) 0%, transparent 60%);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: -2;
-            filter: blur(40px);
-            will-change: transform;
-            transform: translate(0px, 0px);
-        }
-
-        .gl {
-            background: var(--gls);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
-            border: 1px solid var(--gls-b);
-            box-shadow: 0 20px 40px var(--gls-s), inset 0 1px 0 var(--gls-h);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .gl:hover {
-            border-color: var(--gls-h);
-            transform: translateY(-4px);
-        }
-
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 100;
-            padding: 1.5rem 0; transition: all 0.3s ease;
-            border-bottom: 1px solid transparent;
-        }
-
-        nav.s {
-            padding: 1rem 0;
-            background: var(--gls);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border-bottom: 1px solid var(--gls-b);
-            box-shadow: 0 10px 30px var(--gls-s);
-        }
-
-        .nw {
-            max-width: 1400px; margin: 0 auto; display: flex;
-            justify-content: space-between; align-items: center; padding: 0 3rem;
-        }
-
-        .lg { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 600; color: var(--fg); text-decoration: none; letter-spacing: -0.05em; }
-        
-        .nl { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-        .nl a { color: var(--fg-m); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s ease; }
-        .nl a:hover { color: var(--fg); }
-
-        .tb {
-            background: var(--icn); border: 1px solid var(--gls-b);
-            color: var(--fg); cursor: pointer; display: flex;
-            align-items: center; justify-content: center;
-            width: 36px; height: 36px; border-radius: 50%;
-            transition: all 0.2s ease;
-        }
-        .tb:hover { background: var(--btn-gh); }
-
-        #m-i { display: none; }
-        #s-i { display: block; }
-        body.l #m-i { display: block; }
-        body.l #s-i { display: none; }
-
-        .hr {
-            min-height: 100vh; display: flex; align-items: center;
-            max-width: 1400px; margin: 0 auto; padding: 0 3rem; gap: 5rem;
-        }
-
-        .ht { flex: 1.1; z-index: 2; }
-        .ht h1 { font-size: 6rem; line-height: 1; margin-bottom: 1.5rem; color: var(--fg); letter-spacing: -0.05em; font-weight: 600; }
-        .ht p { font-size: 1.1rem; color: var(--fg-m); margin-bottom: 3rem; max-width: 480px; }
-
-        .bs { display: flex; gap: 1rem; }
-        .b {
-            padding: 1rem 2.5rem; border-radius: 99px; text-decoration: none;
-            font-size: 0.9rem; font-weight: 500; transition: all 0.2s ease;
-            display: inline-flex; align-items: center; gap: 8px; border: 1px solid transparent;
-        }
-        .b1 { background: var(--fg); color: var(--bg); }
-        .b1:hover { transform: translateY(-2px); opacity: 0.9; }
-        .b2 { background: var(--btn-g); color: var(--fg); border-color: var(--gls-b); }
-        .b2:hover { background: var(--btn-gh); transform: translateY(-2px); border-color: var(--gls-h); }
-
-        .hi {
-            flex: 0.9; display: flex; justify-content: center; align-items: center;
-            perspective: 1500px; z-index: 2;
-        }
-
-        .tw {
-            width: 100%; max-width: 480px; height: auto;
-            position: relative; transform-style: preserve-3d;
-            will-change: transform;
-        }
-
-        .ti {
-            width: 100%; height: auto; display: block;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px var(--gls-s);
-        }
-
-        .ft { padding: 8rem 3rem; max-width: 1400px; margin: 0 auto; position: relative; z-index: 2; }
-        .fh { margin-bottom: 4rem; }
-        .fh h2 { font-size: 2.5rem; font-weight: 600; letter-spacing: -0.04em; }
-
-        .fg { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .fc { padding: 2.5rem; border-radius: 24px; display: flex; flex-direction: column; }
-        
-        .ic {
-            width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
-            background: var(--icn); border: 1px solid var(--gls-b); border-radius: 12px;
-            color: var(--fg); margin-bottom: 1.5rem;
-        }
-        .ic svg { width: 20px; height: 20px; stroke-width: 1.5; stroke: currentColor; fill: none; }
-        
-        .fc h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; letter-spacing: -0.02em; }
-        .fc p { color: var(--fg-m); font-size: 0.9rem; line-height: 1.6; }
-
-        footer { padding: 4rem 3rem; text-align: center; border-top: 1px solid var(--gls-b); position: relative; z-index: 2; }
-        footer p { color: var(--fg-m); font-size: 0.9rem; }
-        footer a { color: var(--fg); text-decoration: none; font-weight: 500; }
-
-        @media (max-width: 1024px) {
-            .hr { flex-direction: column; text-align: center; gap: 4rem; padding-top: 8rem; }
-            .ht p { margin: 0 auto 3rem auto; }
-            .bs { justify-content: center; }
-        }
-
-        @media (max-width: 768px) {
-            .nl { display: none; }
-            .ht h1 { font-size: 4rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lumi — mod menu for Gorilla Tag</title>
+  <meta name="description" content="Lumi is a lightweight mod menu for Gorilla Tag with a clean in-game UI and custom cosmetics.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
-    <div class="b-grd"></div>
-    <div class="c-lgt" id="lgt"></div>
+<div id="navbar-container"></div>
+<script>
+  function initBuyDropdown(){
+    if (window.__buyInit) return;
+    window.__buyInit = true;
+    document.querySelectorAll('[data-buy]').forEach((el) => {
+      const trigger = el.querySelector('.buy-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = el.dataset.open === 'true';
+        document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; if (o.querySelector('.buy-trigger')) o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+        if (!open) { el.dataset.open = 'true'; trigger.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; if (o.querySelector('.buy-trigger')) o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; if (o.querySelector('.buy-trigger')) o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+    });
+  }
 
-    <nav id="n">
-        <div class="nw">
-            <a href="#" class="lg">untitled</a>
-            <ul class="nl">
-                <li><a href="#home">home</a></li>
-                <li><a href="#features">features</a></li>
-                <li><a href="https://discord.gg/untitledmenu">discord</a></li>
-                <li>
-                    <button class="tb" id="t">
-                        <svg id="s-i" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="5"></circle>
-                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                        </svg>
-                        <svg id="m-i" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  function setActiveNav(){
+    const container = document.getElementById('navbar-container');
+    if (!container) return;
+    const links = container.querySelectorAll('nav .links a');
+    const current = location.href.split('/').pop().split('?')[0].split('#')[0] || 'index.html';
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href) return a.removeAttribute('aria-current');
+      const name = href.split('/').pop();
+      if (name.toLowerCase() === current.toLowerCase() || (name === 'index.html' && current === '')) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
 
-    <section class="hr" id="home">
-        <div class="ht">
-            <h1>the best <br>cheat menu.</h1>
-            <p>the most advanced gorilla tag cheat experience built with extreme customization and a sleek ui.</p>
-            <div class="bs">
-                <a href="https://reseller.best/product/untitled/" class="b b1" target="_blank">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    purchase
-                </a>
-                <a href="https://reseller.best/product/untitled-beta-access/" class="b b2 gl" target="_blank">
-                    beta access
-                </a>
+  fetch('./navbar.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('navbar-container').innerHTML = html;
+      initBuyDropdown();
+      setActiveNav();
+    });
+</script>
+
+
+  <main class="center">
+    <div class="hero">
+      <div>
+        <h1>Untitled</h1>
+        <p class="tagline">The best mod menu for Gorilla&nbsp;Tag</p>
+        <p class="sub">Optimized, fast, &amp; safe. Everything a mod menu needs.</p>
+        <div class="cta-row">
+          <div class="buy" data-buy>
+            <button type="button" class="btn btn-primary buy-trigger" aria-haspopup="menu" aria-expanded="false">
+              Purchase Untitled <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="buy-menu" role="menu">
+              <a href="https://store.reseller.best/product/untitled" role="menuitem">
+                <span class="icon"><i class="fa-solid fa-bolt"></i></span>
+                <span class="label"><strong>Untitled</strong><span>Stable</span></span>
+              </a>
+              <a href="https://store.reseller.best/product/untitled-beta-access" role="menuitem">
+                <span class="icon"><i class="fa-solid fa-flask"></i></span>
+                <span class="label"><strong>Untitled (Beta)</strong><span>Access features early</span></span>
+              </a>
             </div>
+          </div>
+          <a class="btn btn-ghost" href="features.html">See features</a>
         </div>
-        
-        <div class="hi">
-            <div class="tw" id="w">
-                <img src="https://untitled.rip/untitledmenu.png" alt="" class="ti">
-            </div>
-        </div>
+      </div>
+      <img src="assets/mascot.png" alt="Lumi fox mascot">
+    </div>
+
+    <section class="showcases">
+      <h2>Showcases</h2>
+      <div class="marquee"><div class="marquee-track" id="marquee-a"></div></div>
+      <div class="marquee reverse"><div class="marquee-track" id="marquee-b"></div></div>
     </section>
 
-    <section class="ft" id="features">
-        <div class="fh">
-            <h2>everything you need.</h2>
-        </div>
-        
-        <div class="fg">
-            <div class="fc gl">
-                <div class="ic">
-                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                </div>
-                <h3>completely undetected</h3>
-                <p>stay hidden and avoid bans. our advanced bypass methods and rigorous cheat testing protocols ensure your account remains completely safe.</p>
-            </div>
+  </main>
 
-            <div class="fc gl">
-                <div class="ic">
-                    <svg viewBox="0 0 24 24"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line></svg>
-                </div>
-                <h3>extreme customization</h3>
-                <p>make it yours with a highly advanced menu editor tailored to your preferences.</p>
-            </div>
+  <footer>
+    <div class="foot-inner">
+      <div class="socials">
+        <a href="https://discord.gg/untitledmenu" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://youtube.com/shibagtag" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://discord.com/terms">Discord ToS</a>
+      </div>
+    </div>
+  </footer>
 
-            <div class="fc gl">
-                <div class="ic">
-                    <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                </div>
-                <h3>fast updates</h3>
-                <p>get the latest features instantly with leading update speeds keeping you ahead of the curve.</p>
-            </div>
+  <!-- buy dropdown is initialized after navbar injection -->
+  <script>
+    (function(){
+      const showcases = [
+        { "id": "V5RtXuj6d9k", "caption": "Review" },
+        { "id": "Oz5-sTU6Sy0", "caption": "Review" },
+        { "id": "iAQ1T8tlzHY", "caption": "Review" },
+        { "id": "IC8rqK4skV8", "caption": "Trolling" },
+        { "id": "9AOAyYzEc8o", "caption": "Trolling" },
+        { "id": "Zv5Wp_IGA20", "caption": "Review" },
+      ];
+      function tile(v) {
+        const thumb = `https://img.youtube.com/vi/${v.id}/hqdefault.jpg`;
+        return `<div class="showcase" data-yt="${v.id}">
+          <img src="${thumb}" alt="${v.caption}" loading="lazy">
+          <div class="play-btn"><i class="fa-solid fa-play"></i></div>
+          <div class="caption"><i class="fa-brands fa-youtube"></i>${v.caption}</div>
+        </div>`;
+      }
+      const half = Math.ceil(showcases.length / 2);
+      const a = showcases.slice(0, half);
+      const b = showcases.slice(half);
+      const dup = (arr) => arr.concat(arr).map(tile).join('');
+      const aEl = document.getElementById('marquee-a');
+      const bEl = document.getElementById('marquee-b');
+      if (aEl) aEl.innerHTML = dup(a);
+      if (bEl) bEl.innerHTML = dup(b);
 
-            <div class="fc gl">
-                <div class="ic">
-                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line></svg>
-                </div>
-                <h3>clean, responsive ui</h3>
-                <p>experience smooth, responsive, and easy-to-navigate ui tailored for performance.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 untitled. all rights reserved. | join our <a href="https://discord.gg/untitledmenu" target="_blank">discord</a></p>
-    </footer>
-
-    <script>
-        const n = document.getElementById('n');
-        const lgt = document.getElementById('lgt');
-        const w = document.getElementById('w');
-        const t = document.getElementById('t');
-        const b = document.body;
-
-        let tx = 0, ty = 0, cx = 0, cy = 0;
-
-        window.onscroll = () => {
-            if (window.scrollY > 50) n.classList.add('s');
-            else n.classList.remove('s');
-        };
-
-        t.onclick = () => {
-            b.classList.toggle('l');
-        };
-
-        window.onmousemove = e => {
-            const x = e.clientX;
-            const y = e.clientY;
-
-            lgt.style.transform = `translate(${x}px, ${y}px)`;
-
-            if (w) {
-                const r = w.getBoundingClientRect();
-                const ix = r.left + r.width / 2;
-                const iy = r.top + r.height / 2;
-                
-                const px = (x - ix) / window.innerWidth;
-                const py = (y - iy) / window.innerHeight;
-                
-                tx = -py * 20; 
-                ty = px * 20;
-            }
-        };
-
-        document.documentElement.onmouseleave = () => {
-            tx = 0;
-            ty = 0;
-        };
-
-        const render = () => {
-            cx += (tx - cx) * 0.08;
-            cy += (ty - cy) * 0.08;
-            
-            if (w) {
-                w.style.transform = `rotateX(${cx}deg) rotateY(${cy}deg) scale3d(1.02, 1.02, 1.02)`;
-            }
-            
-            requestAnimationFrame(render);
-        };
-        
-        render();
-    </script>
+      // attach play handlers
+      function attachHandlers(root){
+        root.querySelectorAll('.showcase[data-yt]').forEach((el) => {
+          const btn = el.querySelector('.play-btn');
+          if (!btn) return;
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const id = el.dataset.yt;
+            const src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=0&loop=1&playlist=${id}&controls=1&modestbranding=1&rel=0&playsinline=1`;
+            el.innerHTML = `<iframe src="${src}" title="" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen style="pointer-events:auto"></iframe>`;
+          });
+        });
+      }
+      if (aEl) attachHandlers(aEl);
+      if (bEl) attachHandlers(bEl);
+    })();
+  </script>
 </body>
 </html>

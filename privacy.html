@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Policy — Lumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+  <nav>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="showcases.html">Showcases</a>
+    </div>
+    <div class="buy" data-buy>
+      <button type="button" class="nav-cta buy-trigger" aria-haspopup="menu" aria-expanded="false">
+        Buy <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="buy-menu" role="menu">
+        <a href="https://discord.gg/untitledmenu" role="menuitem">
+          <span class="icon"><i class="fa-solid fa-bolt"></i></span>
+          <span class="label"><strong>Buy Untitled</strong><span>Stable release</span></span>
+        </a>
+        <a href="https://discord.gg/untitledmenu" role="menuitem">
+          <span class="icon"><i class="fa-solid fa-flask"></i></span>
+          <span class="label"><strong>Buy Untitled (Beta)</strong><span>Early features, cutting edge</span></span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="prose">
+    <h1>Privacy Policy</h1>
+    <p class="muted">Last updated: July 13, 2026</p>
+
+    <p>This policy explains what Lumi ("we") collects when you use the Lumi mod menu, our Discord server, or this website — and what we do with it. Short version: we collect as little as possible.</p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li><strong>Discord account info.</strong> If you interact with our Discord server or bot, we see your Discord user ID, username, and messages in the server, as any Discord server does. Our bot stores moderation records (warnings) tied to your Discord user ID.</li>
+      <li><strong>Mod usage.</strong> The mod may check for updates when it starts. That request includes your game version and mod version so we can serve the right update. We do not collect gameplay data, voice, or personal information from inside the game.</li>
+      <li><strong>This website.</strong> This site does not use cookies, analytics, or trackers.</li>
+    </ul>
+
+    <h2>What we don't collect</h2>
+    <ul>
+      <li>No real names or emails. Purchases are handled through third-party payment processors — we never see or store your card details.</li>
+      <li>No voice chat, no gameplay recordings, no telemetry from your headset.</li>
+      <li>No selling or sharing of data with third parties. Ever.</li>
+    </ul>
+
+    <h2>How long we keep it</h2>
+    <p>Moderation records stay while they're relevant to keeping the community safe. You can ask a moderator to review or remove your records where reasonable.</p>
+
+    <h2>Third parties</h2>
+    <p>Our community runs on Discord, so the <a href="https://discord.com/privacy">Discord Privacy Policy</a> and <a href="https://discord.com/terms">Discord Terms of Service</a> also apply to everything that happens there.</p>
+
+    <h2>Children</h2>
+    <p>Lumi follows Discord's minimum age requirements. If you're not old enough to use Discord in your country, you can't use our server.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, we'll post the update here and announce it in the Discord server.</p>
+
+    <h2>Contact</h2>
+    <p>Questions about this policy? Ping a staff member in the Lumi Discord server.</p>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="socials">
+        <a href="https://discord.com" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://youtube.com" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://discord.com/terms">Discord ToS</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('[data-buy]').forEach((el) => {
+      const trigger = el.querySelector('.buy-trigger');
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = el.dataset.open === 'true';
+        document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+        if (!open) { el.dataset.open = 'true'; trigger.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+    });
+  </script>
+</body>
+</html>

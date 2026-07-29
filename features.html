@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Features — Lumi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+ <div id="navbar-container"></div>
+<script>
+  function initBuyDropdown(){
+    if (window.__buyInit) return;
+    window.__buyInit = true;
+    document.querySelectorAll('[data-buy]').forEach((el) => {
+      const trigger = el.querySelector('.buy-trigger');
+      if (!trigger) return;
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const open = el.dataset.open === 'true';
+        document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; if (o.querySelector('.buy-trigger')) o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+        if (!open) { el.dataset.open = 'true'; trigger.setAttribute('aria-expanded', 'true'); }
+      });
+    });
+    document.addEventListener('click', () => {
+      document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; if (o.querySelector('.buy-trigger')) o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') document.querySelectorAll('[data-buy]').forEach((o) => { o.dataset.open = 'false'; if (o.querySelector('.buy-trigger')) o.querySelector('.buy-trigger').setAttribute('aria-expanded', 'false'); });
+    });
+  }
+
+  function setActiveNav(){
+    const container = document.getElementById('navbar-container');
+    if (!container) return;
+    const links = container.querySelectorAll('nav .links a');
+    const current = location.href.split('/').pop().split('?')[0].split('#')[0] || 'index.html';
+    links.forEach(a => {
+      const href = a.getAttribute('href');
+      if (!href) return a.removeAttribute('aria-current');
+      const name = href.split('/').pop();
+      if (name.toLowerCase() === current.toLowerCase() || (name === 'index.html' && current === '')) a.setAttribute('aria-current', 'page');
+      else a.removeAttribute('aria-current');
+    });
+  }
+
+  fetch('./navbar.html')
+    .then(r => r.text())
+    .then(html => {
+      document.getElementById('navbar-container').innerHTML = html;
+      initBuyDropdown();
+      setActiveNav();
+    });
+</script>
+
+  <main>
+    <header class="page-head">
+      <h1>Features</h1>
+      <div class="search-wrap">
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" id="feature-search" class="search" placeholder="Search features…" aria-label="Search features" autocomplete="off">
+      </div>
+      <p class="result-count" id="result-count" aria-live="polite"></p>
+      <div class="chips" id="chips"></div>
+    </header>
+
+    <div id="feature-list"></div>
+    <p id="no-results" class="muted" hidden>No features match that search.</p>
+
+
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div class="socials">
+        <a href="https://discord.com" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+        <a href="https://youtube.com" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="https://discord.com/terms">Discord ToS</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const list = document.getElementById('feature-list');
+    const search = document.getElementById('feature-search');
+    const noResults = document.getElementById('no-results');
+    const count = document.getElementById('result-count');
+    let data = { categories: [] };
+
+    // wrap matched query text in <mark>, safely
+    function highlight(text, q) {
+      const frag = document.createDocumentFragment();
+      if (!q) {
+        frag.append(text);
+        return frag;
+      }
+      const lower = text.toLowerCase();
+      let i = 0;
+      let hit;
+      while ((hit = lower.indexOf(q, i)) !== -1) {
+        if (hit > i) frag.append(text.slice(i, hit));
+        const mark = document.createElement('mark');
+        mark.textContent = text.slice(hit, hit + q.length);
+        frag.append(mark);
+        i = hit + q.length;
+      }
+      frag.append(text.slice(i));
+      return frag;
+    }
+
+    function render(query) {
+      const q = query.trim().toLowerCase();
+      list.innerHTML = '';
+      let shown = 0;
+      let step = 0;
+
+      for (const cat of data.categories) {
+        const matches = cat.features.filter((f) =>
+          !q || f.title.toLowerCase().includes(q) || f.description.toLowerCase().includes(q)
+        );
+        if (!matches.length) continue;
+        shown += matches.length;
+
+        const head = document.createElement('div');
+        head.className = 'cat-head enter';
+        head.id = 'cat-' + cat.name.toLowerCase().replace(/\s+/g, '-');
+        head.style.animationDelay = `${step++ * 35}ms`;
+        const h2 = document.createElement('h2');
+        h2.textContent = cat.name;
+        const badge = document.createElement('span');
+        badge.className = 'count';
+        badge.textContent = matches.length;
+        const rule = document.createElement('span');
+        rule.className = 'rule';
+        head.append(h2, badge, rule);
+        list.appendChild(head);
+
+        const grid = document.createElement('div');
+        grid.className = 'grid';
+        for (const f of matches) {
+          const card = document.createElement('div');
+          card.className = 'card enter';
+          card.style.animationDelay = `${step++ * 35}ms`;
+
+          const h3 = document.createElement('h3');
+          h3.append(highlight(f.title, q));
+
+          const p = document.createElement('p');
+          p.append(highlight(f.description, q));
+
+          card.append(h3, p);
+          grid.appendChild(card);
+        }
+        list.appendChild(grid);
+      }
+
+      noResults.hidden = shown > 0;
+      count.textContent = q
+        ? `${shown} feature${shown === 1 ? '' : 's'} match "${query.trim()}"`
+        : `${shown} features`;
+    }
+
+    function renderChips() {
+      const chips = document.getElementById('chips');
+      chips.innerHTML = '';
+      for (const cat of data.categories) {
+        const a = document.createElement('a');
+        a.href = '#cat-' + cat.name.toLowerCase().replace(/\s+/g, '-');
+        a.textContent = cat.name;
+        chips.appendChild(a);
+      }
+    }
+
+    fetch('features.json')
+      .then((r) => r.json())
+      .then((json) => { data = json; renderChips(); render(''); })
+      .catch(() => {
+        noResults.textContent = 'Could not load features';
+        noResults.hidden = false;
+      });
+
+    let debounce;
+    search.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => render(search.value), 90);
+    });
+
+    // buy dropdown: initialization is handled by `initBuyDropdown()` called after navbar injection
+  </script>
+</body>
+</html>
